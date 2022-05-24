@@ -18,9 +18,6 @@ function Navbar() {
             <div>
                 <a href={"http://localhost:3000/"}>Settings</a>
             </div>
-            <div>
-                <a href={"http://localhost:3000/"}>More</a>
-            </div>
         </nav>
     )
 }
