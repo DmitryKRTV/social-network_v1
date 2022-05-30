@@ -1,0 +1,53 @@
+.content {
+    min-height: 100%;
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}
+
+.dialogs{
+    padding: 1rem;
+    margin: 1rem;
+    border: 1px solid #939393;
+    border-radius: 1rem;
+    background: rgb(242,245,246); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(242,245,246,1) 0%, rgba(227,234,237,1) 37%, rgba(200,215,220,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  rgba(242,245,246,1) 0%,rgba(227,234,237,1) 37%,rgba(200,215,220,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  rgba(242,245,246,1) 0%,rgba(227,234,237,1) 37%,rgba(200,215,220,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f5f6', endColorstr='#c8d7dc',GradientType=0 ); /* IE6-9 */
+
+}
+
+.dialogs-items  {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.dialog{
+    padding: 0.3rem;
+    border: 1px solid #939393;
+    border-radius: 0.5rem;
+    margin: 0 0 1rem 0;
+    background-color: #ffffff;
+}
+
+.dialog:last-child{
+    margin: 0;
+}
+
+.messages{
+    padding: 1rem;
+    margin: 1rem;
+    border: 1px solid #939393;
+    border-radius: 1rem;
+    background: rgb(242,245,246); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(242,245,246,1) 0%, rgba(227,234,237,1) 37%, rgba(200,215,220,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  rgba(242,245,246,1) 0%,rgba(227,234,237,1) 37%,rgba(200,215,220,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  rgba(242,245,246,1) 0%,rgba(227,234,237,1) 37%,rgba(200,215,220,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f5f6', endColorstr='#c8d7dc',GradientType=0 ); /* IE6-9 */
+
+}
+
+.message{
+
+}
