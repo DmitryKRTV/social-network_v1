@@ -1,33 +1,77 @@
 import React from 'react';
 import dialogsModule from './Dialogs.module.css'
-import {NavLink} from "react-router-dom";
+import DialogItem from "./DialogItem/DialogItem";
+
+
+
+
 
 function Dialogs() {
+
+    let dialogsData = [
+        {
+            id: 1,
+            name: "Dmitry",
+        },
+        {
+            id: 2,
+            name: "Andrey",
+        },
+        {
+            id: 3,
+            name: "Sveta",
+        },
+        {
+            id: 4,
+            name: "Victor",
+        },
+        {
+            id: 5,
+            name: "Valera",
+        },
+    ]
+
+    let messagesData = [
+        {
+            id: 1,
+            message: "Gello",
+        },
+        {
+            id: 2,
+            message: "Hello",
+        },
+        {
+            id: 3,
+            message: "Yo",
+        },
+        {
+            id: 4,
+            message: "Whats",
+        },
+        {
+            id: 5,
+            message: "ye",
+        },
+    ]
+
+
     return (
         <div className={dialogsModule["content"]}>
             <div className={dialogsModule["dialogs"]}>
                 <div className={dialogsModule["dialogs-items"]}>
-                    <div className={dialogsModule["dialog"]}>
-                        <NavLink to={"/dialogs/1"}>Dmitry</NavLink>
-                    </div>
-                    <div className={dialogsModule["dialog"]}>
-                        <NavLink to={"/dialogs/2"}>Andrey</NavLink>
-                    </div>
-                    <div className={dialogsModule["dialog"]}>
-                        <NavLink to={"/dialogs/3"}>Sveta</NavLink>
-                    </div>
-                    <div className={dialogsModule["dialog"]}>
-                        <NavLink to={"/dialogs/4"}>Victor</NavLink>
-                    </div>
-                    <div className={dialogsModule["dialog"]}>
-                        <NavLink to={"/dialogs/5"}>Valera</NavLink>
-                    </div>
+                    {
+                        dialogsData.map((item) => {
+                            return <DialogItem key={item.name} name={item.name} id={`${item.id}`}/>
+                        })
+                    }
                 </div>
             </div>
             <div className={dialogsModule["messages"]}>
-                <div className={dialogsModule["message"]}>Hi</div>
-                <div className={dialogsModule["message"]}>Howya</div>
-                <div className={dialogsModule["message"]}>Hrllo</div>
+                {
+                    messagesData.map((item) => {
+                        return <MessageItem key={item.message} message={item.message} />
+                    })
+                }
             </div>
         </div>
     )

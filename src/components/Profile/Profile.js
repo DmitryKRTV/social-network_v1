@@ -1,22 +1,16 @@
 import React from 'react';
 import profileModule from './Profile.module.css';
 import MyPosts from "./MyPosts/MyPosts";
+import PersonDescription from "./PersonDescrption/PersonDescription";
+import PersonImage from "./PersonImage/PersonImage";
+
 
 function Profile() {
     return (
         <div className={profileModule["content"]}>
-            <div className={profileModule["description"]}>
-                <div className={profileModule["avatar"]}>
-                    Avatar
-                </div>
-                <div className={profileModule["characteristics"]}>
-                    description of characteristics
-                </div>
-            </div>
-            <div className={profileModule["personalImage"]}>
-                Some Profile Image
-            </div>
-           <MyPosts/>
+            <PersonDescription/>
+            <PersonImage/>
+            <MyPosts/>
         </div>
     )
 }

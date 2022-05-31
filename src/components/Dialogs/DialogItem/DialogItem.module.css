@@ -1,0 +1,15 @@
+.dialog{
+    padding: 0.3rem;
+    border: 1px solid #939393;
+    border-radius: 0.5rem;
+    margin: 0 0 1rem 0;
+    background-color: #ffffff;
+}
+
+.dialog a{
+    color: black
+}
+
+.dialog:last-child{
+    margin: 0;
+}
