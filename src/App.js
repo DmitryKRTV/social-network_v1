@@ -8,17 +8,17 @@ import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 
-function App() {
+function App(props) {
     return (
         <BrowserRouter>
             <div className={"wrapper"}>
                 <div className={"app-wrapper"}>
                     <Header/>
-                    <Navbar/>
+                    <Navbar friendsData={props.state.navbarFriendsMenu.friendsData}/>
                     <div className={"app-wrapper-content"}>
                         <Routes>
-                            <Route path={"/profile"} element={<Profile/>}/>
-                            <Route path={"/dialogs/*"} element={<Dialogs/>}/>
+                            <Route path={"/profile"} element={<Profile postsData={props.state.profile.postsData}/>}/>
+                            <Route path={"/dialogs/*"} element={<Dialogs dialogsData={props.state.dialogs.dialogsData} messagesData={props.state.dialogs.messagesData}/>}/>
                             <Route path={"/news"} element={<News/>}/>
                             <Route path={"/music"} element={<Music/>}/>
                             <Route path={"/settings"} element={<Settings/>}/>

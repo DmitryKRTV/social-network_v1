@@ -1,5 +1,5 @@
 import React from 'react';
-import messageItemModule from "../MessageItem.module.css";
+import messageItemModule from "./MessageItem.module.css";
 
 function MessageItem(props) {
     return (

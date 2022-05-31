@@ -5,12 +5,12 @@ import PersonDescription from "./PersonDescrption/PersonDescription";
 import PersonImage from "./PersonImage/PersonImage";
 
 
-function Profile() {
+function Profile(props) {
     return (
         <div className={profileModule["content"]}>
             <PersonDescription/>
             <PersonImage/>
-            <MyPosts/>
+            <MyPosts postsData={props.postsData}/>
         </div>
     )
 }
