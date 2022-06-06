@@ -1,8 +1,8 @@
 import React from 'react';
 import profileModule from './Profile.module.css';
-import MyPosts from "./MyPosts/MyPosts";
 import PersonDescription from "./PersonDescrption/PersonDescription";
 import PersonImage from "./PersonImage/PersonImage";
+import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
 
 function Profile(props) {
@@ -10,7 +10,7 @@ function Profile(props) {
         <div className={profileModule["content"]}>
             <PersonDescription/>
             <PersonImage/>
-            <MyPosts postsData={props.postsData}/>
+            <MyPostsContainer />
         </div>
     )
 }

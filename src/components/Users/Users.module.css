@@ -1,0 +1,13 @@
+.userPhoto{
+    height: 3rem;
+}
+
+.selectedPage {
+    font-weight: 700;
+}
+
+.pagesBlock{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 0.5rem;
+}

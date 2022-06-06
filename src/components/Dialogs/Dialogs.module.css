@@ -36,3 +36,30 @@
     flex-direction: column;
     justify-content: flex-end;
 }
+
+.messageBlock{
+    min-height: 3rem;
+    border: 1px solid #939393;
+    margin: 1rem;
+    border-radius: 1rem;
+    background-color: white;
+    display: flex;
+    align-items: center;
+}
+
+.tArea {
+    flex: 1 1 100%;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    resize: none      /*!!!!!!!!!!!!!!!!!!!!!!!!*/
+
+}
+
+.sendMessageBtn{
+    height: 2.5rem;
+    flex: 0 0 2.5rem;
+    border-radius: 50%;
+    border: 1px solid #939393;
+    margin: 0.2rem;
+    align-self: flex-end;
+}

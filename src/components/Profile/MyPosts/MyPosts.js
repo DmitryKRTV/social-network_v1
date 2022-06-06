@@ -4,12 +4,28 @@ import Post from "./Post/Post";
 
 
 function MyPosts(props) {
+
+    const addPost = () => {
+        props.addPost();
+    }
+
+    let onPostChange = (event) => {
+        let text = event.target.value;
+        props.updateNewPostText(text);
+    }
     return (
         <div className={profileModule["myPosts"]}>
             My Posts
             <div className={profileModule["postCreation"]}>
-                <textarea className={profileModule["tArea"]} rows={5}></textarea>
-                <button className={profileModule["addPostButton"]}>Add post</button>
+                <textarea
+                          className={profileModule["tArea"]}
+                          value={props.newPostText}
+                          onChange={onPostChange}
+                          rows={5}/>
+                <button
+                    className={profileModule["addPostButton"]}
+                    onClick={addPost}>Add post
+                </button>
             </div>
             {
                 props.postsData.map((item) => {

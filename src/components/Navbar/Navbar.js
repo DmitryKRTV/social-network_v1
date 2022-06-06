@@ -30,6 +30,10 @@ function Navbar(props) {                                                        
             <div className={navModule["item"]}>
                 <NavLink className={isActiveLink} to={"/settings"}>Settings</NavLink>
             </div>
+            <div className={navModule["item"]}>
+                <NavLink className={isActiveLink} to={"/users"}>Users</NavLink>
+            </div>
+
             <div className={navModule["friendsBlock"]}>
                 <div className={navModule["preview"]}>Friends</div>
                 {

@@ -1,12 +1,13 @@
 import './App.css';
 import {Routes, Route, BrowserRouter} from "react-router-dom";
 import Header from "./components/Header/Header";
-import Navbar from "./components/Navbar/Navbar";
 import Profile from "./components/Profile/Profile";
-import Dialogs from "./components/Dialogs/Dialogs";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import NavbarContainer from "./components/Navbar/NavbarContainer";
+import UsersContainer from "./components/Users/UsersContainer";
 
 function App(props) {
     return (
@@ -14,14 +15,15 @@ function App(props) {
             <div className={"wrapper"}>
                 <div className={"app-wrapper"}>
                     <Header/>
-                    <Navbar friendsData={props.state.navbarFriendsMenu.friendsData}/>
+                    <NavbarContainer />
                     <div className={"app-wrapper-content"}>
                         <Routes>
-                            <Route path={"/profile"} element={<Profile postsData={props.state.profile.postsData}/>}/>
-                            <Route path={"/dialogs/*"} element={<Dialogs dialogsData={props.state.dialogs.dialogsData} messagesData={props.state.dialogs.messagesData}/>}/>
+                            <Route path={"/profile"} element={<Profile />}/>
+                            <Route path={"/dialogs/*"} element={<DialogsContainer />}/>
                             <Route path={"/news"} element={<News/>}/>
                             <Route path={"/music"} element={<Music/>}/>
                             <Route path={"/settings"} element={<Settings/>}/>
+                            <Route path={"/users"} element={<UsersContainer/>}/>
                         </Routes>
                     </div>
                 </div>
