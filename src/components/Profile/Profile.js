@@ -8,7 +8,7 @@ import MyPostsContainer from "./MyPosts/MyPostsContainer";
 function Profile(props) {
     return (
         <div className={profileModule["content"]}>
-            <PersonDescription/>
+            <PersonDescription profile = {props.profile}/>
             <PersonImage/>
             <MyPostsContainer />
         </div>
