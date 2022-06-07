@@ -1,14 +1,18 @@
 import React from 'react';
 import logoImg from "../../images/logo.png";
 import headerModule from './Header.module.css';
+import {NavLink} from "react-router-dom";
 
-function Header() {
+function Header(props) {
     return (
         <header className={headerModule["header"]}>
             <div className={headerModule["logo"]}>
                 <a href={"http://localhost:3000/"}>
                     <img src={logoImg} alt={"None"} />
                 </a>
+            </div>
+            <div>
+                {props.isAuth ? props.login : <NavLink to={'/login'}>Login</NavLink>}
             </div>
         </header>
     )
