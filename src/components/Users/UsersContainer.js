@@ -2,9 +2,6 @@ import {connect} from "react-redux";
 import {
     follow,
     setNewCurrentPage,
-    toggleIsFetching,
-    setTotalUsersCount,
-    setUsers,
     unfollow, toggleIsFollowingProgress, getUsers,
 } from "../../redux/usersReducer";
 import React from "react";

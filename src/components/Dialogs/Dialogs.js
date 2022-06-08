@@ -7,15 +7,6 @@ import MessageItem from "./MessageItem/MessageItem";
 
 function Dialogs(props) {
 
-    const onAddNewMessage = () =>{
-        props.addNewMessage();
-    }
-
-    function changeMessage(event) {
-        let text = event.target.value;
-        props.onMessageChange(text);
-    }
-
     return (
         <div className={dialogsModule["content"]}>
             <div className={dialogsModule["dialogs"]}>
@@ -37,10 +28,10 @@ function Dialogs(props) {
                     <textarea
                               className={dialogsModule["tArea"]} rows={5}
                               value={props.newMessageText}
-                              onChange={changeMessage}
+                              onChange={props.changeMessage}
                     ></textarea>
                     <button className={dialogsModule["sendMessageBtn"]}
-                            onClick={onAddNewMessage}
+                            onClick={props.onAddNewMessage}
                     >Send</button>
                 </div>
             </div>

@@ -1,13 +1,9 @@
-const SET_USERS_DATA = "SET_USERS_DATA";
-const UPDATE_NEW_MESSAGE_TEXT = "UPDATE-NEW-MESSAGE-TEXT";
+import {authAPI} from "../api/api";
 
-export const setUserData = (id, email, login) => ({type: SET_USERS_DATA, data:{id, email, login} })
+const SET_USERS_DATA = "SET_USERS_DATA";
 
 let initialState = {
-    id: null,
-    email: null,
-    login: null,
-    isAuth: false,
+    id: null, email: null, login: null, isAuth: false,
 }
 
 const authReducer = (state = initialState, action) => {
@@ -15,9 +11,7 @@ const authReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_USERS_DATA: {
             return {
-                ...state,
-                ...action.data,
-                isAuth: true,
+                ...state, ...action.data, isAuth: true,
             }
         }
         default:
@@ -25,5 +19,18 @@ const authReducer = (state = initialState, action) => {
     }
 }
 
+export const setUserData = (id, email, login) => ({type: SET_USERS_DATA, data: {id, email, login}})
+
+export const getAuthThunkCreator = () => {
+    return (dispatch) => {
+        authAPI.getAuth()
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    let {id, email, login} = response.data.data;
+                    dispatch(setUserData(id, email, login))
+                }
+            });
+    }
+}
 
 export default authReducer;
