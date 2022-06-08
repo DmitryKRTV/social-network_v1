@@ -4,6 +4,7 @@ import {connect, useDispatch} from "react-redux";
 import {getProfileThunkCreator} from "../../redux/profileReducer";
 
 import {
+    Navigate,
     useLocation,
     useNavigate,
     useParams,
@@ -33,6 +34,7 @@ class ProfileContainer extends React.Component {
     }
 
     render() {
+
         return (
             <Profile {...this.props}/>
         )
@@ -40,9 +42,12 @@ class ProfileContainer extends React.Component {
 }
 
 let mapStateToProps = (state) => ({
-    profile: state.profile.profile
+    profile: state.profile.profile,
+    isAuth: state.auth.isAuth,
 });
 
-let withUrlDataContainerComponent = withRouter(ProfileContainer);
+
+
+let withUrlDataContainerComponent = withRouter(withRouter(ProfileContainer));
 
 export default connect(mapStateToProps, {getProfileThunkCreator})(withUrlDataContainerComponent);

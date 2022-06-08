@@ -1,9 +1,8 @@
-import React from 'react';
+import React from "react";
 import dialogsModule from './Dialogs.module.css'
 import DialogItem from "./DialogItem/DialogItem";
 import MessageItem from "./MessageItem/MessageItem";
-
-
+import { Navigate } from "react-router-dom";
 
 function Dialogs(props) {
 
@@ -28,7 +27,7 @@ function Dialogs(props) {
                     <textarea
                               className={dialogsModule["tArea"]} rows={5}
                               value={props.newMessageText}
-                              onChange={props.changeMessage}
+                              onChange={(props.changeMessage)}
                     ></textarea>
                     <button className={dialogsModule["sendMessageBtn"]}
                             onClick={props.onAddNewMessage}
