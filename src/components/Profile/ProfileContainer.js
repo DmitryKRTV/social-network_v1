@@ -1,8 +1,7 @@
 import React from 'react';
 import Profile from "./Profile";
 import {connect, useDispatch} from "react-redux";
-import {getProfileThunkCreator} from "../../redux/profileReducer";
-
+import {getProfileThunkCreator, getStatsThunk, updateStatsThunk} from "../../redux/profileReducer";
 import {
     Navigate,
     useLocation,
@@ -30,7 +29,10 @@ function withRouter(Component) {
 class ProfileContainer extends React.Component {
 
     componentDidMount() {
-        this.props.router.dispatch(getProfileThunkCreator(this.props.router.params.userId))
+        let userIdFromProps = this.props.router.params.userId
+        if (!userIdFromProps) userIdFromProps = 24342;
+        this.props.router.dispatch(getProfileThunkCreator(userIdFromProps))
+        this.props.getStatsThunk(userIdFromProps);
     }
 
     render() {
@@ -44,10 +46,11 @@ class ProfileContainer extends React.Component {
 let mapStateToProps = (state) => ({
     profile: state.profile.profile,
     isAuth: state.auth.isAuth,
+    status: state.profile.status,
 });
 
 
 
 let withUrlDataContainerComponent = withRouter(withRouter(ProfileContainer));
 
-export default connect(mapStateToProps, {getProfileThunkCreator})(withUrlDataContainerComponent);
+export default connect(mapStateToProps, {getProfileThunkCreator, getStatsThunk, updateStatsThunk})(withUrlDataContainerComponent);

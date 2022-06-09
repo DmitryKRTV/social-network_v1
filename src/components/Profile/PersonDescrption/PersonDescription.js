@@ -14,7 +14,9 @@ function PersonDescription(props) {
             <div className={PersonDescriptionModule["avatar"]}>
                 <img src={props.profile.photos.large} alt={""}/>
             </div>
-            <ProfileStatus status={"Hello"} />
+            <div className={PersonDescriptionModule["status"]}>
+            <ProfileStatus status={props.status} updateStatsThunk={props.updateStatsThunk}/>
+        </div>
             <div className={PersonDescriptionModule["characteristics"]}>
                 description of characteristics
             </div>

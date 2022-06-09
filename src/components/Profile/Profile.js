@@ -4,11 +4,10 @@ import PersonDescription from "./PersonDescrption/PersonDescription";
 import PersonImage from "./PersonImage/PersonImage";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
-
 function Profile(props) {
     return (
         <div className={profileModule["content"]}>
-            <PersonDescription profile = {props.profile}/>
+            <PersonDescription profile = {props.profile} status = {props.status} updateStatsThunk={props.updateStatsThunk}/>
             <PersonImage/>
             <MyPostsContainer />
         </div>
