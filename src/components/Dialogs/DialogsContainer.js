@@ -1,4 +1,4 @@
-import {addNewMessage, updateNewMessage} from "../../redux/dialogsReducer";
+import {addNewMessage} from "../../redux/dialogsReducer";
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
 import React from "react";
@@ -7,23 +7,14 @@ import {compose} from "redux";
 
 class DialogsContainer extends React.Component {
 
-    onAddNewMessage() {
-        this.props.addNewMessage();
-    }
-
-    changeMessage(e) {
-        let text = e.target.value;
-        console.log(this.props.updateNewMessage(text))
-    }
 
     render() {
         return <>
             {<Dialogs
+                addNewMessage = {this.props.addNewMessage}
                 newMessageText={this.props.newMessageText}
                 dialogsData={this.props.dialogsData}
                 messagesData={this.props.messagesData}
-                onAddNewMessage={this.onAddNewMessage}
-                changeMessage={this.changeMessage}
                 isAuth={this.props.isAuth}
             />}
         </>
@@ -40,6 +31,6 @@ const mapStateToProps = (state) => {
 
 
 export default compose(
-    connect(mapStateToProps, {addNewMessage, updateNewMessage}),
+    connect(mapStateToProps, {addNewMessage}),
     WithAuthRedirect,
 )(Dialogs)

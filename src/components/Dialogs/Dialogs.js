@@ -3,8 +3,13 @@ import dialogsModule from './Dialogs.module.css'
 import DialogItem from "./DialogItem/DialogItem";
 import MessageItem from "./MessageItem/MessageItem";
 import { Navigate } from "react-router-dom";
+import {Field, Form, Formik} from "formik";
 
 function Dialogs(props) {
+
+    const addMessage = (text) => {
+        props.addNewMessage(text);
+    }
 
     return (
         <div className={dialogsModule["content"]}>
@@ -24,18 +29,37 @@ function Dialogs(props) {
                     })
                 }
                 <div className={dialogsModule["messageBlock"]}>
-                    <textarea
-                              className={dialogsModule["tArea"]} rows={5}
-                              value={props.newMessageText}
-                              onChange={(props.changeMessage)}
-                    ></textarea>
-                    <button className={dialogsModule["sendMessageBtn"]}
-                            onClick={props.onAddNewMessage}
-                    >Send</button>
+                    <AddNewMessageForm  addMessage={addMessage} />
                 </div>
             </div>
         </div>
     )
+}
+
+const AddNewMessageForm = (props) => {
+    return(<div>
+        <Formik
+            initialValues={
+                {newMessageBody: ""}
+            }
+            onSubmit={(values,{resetForm})=>{
+                props.addMessage(values.newMessageBody)
+                resetForm({values:""})
+            }
+            }>
+            <Form>
+                <div>
+                    <Field
+                        name={'newMessageBody'}
+                        as={'textarea'}
+                        type={'text'}
+                        placeholder={'enter message'} />
+                </div>
+                <button type={'submit'}>Send</button>
+            </Form>
+
+        </Formik>
+    </div>)
 }
 
 export default Dialogs

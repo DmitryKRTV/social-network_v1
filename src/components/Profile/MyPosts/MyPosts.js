@@ -1,37 +1,66 @@
 import React from 'react';
 import profileModule from './MyPosts.module.css';
 import Post from "./Post/Post";
+import {ErrorMessage, Field, Form, Formik} from "formik";
+import * as Yup from "yup";
 
 
 function MyPosts(props) {
 
-    const addPost = () => {
-        props.addPost();
-    }
-
-    let onPostChange = (event) => {
-        let text = event.target.value;
-        props.updateNewPostText(text);
-    }
     return (
         <div className={profileModule["myPosts"]}>
             My Posts
             <div className={profileModule["postCreation"]}>
-                <textarea
-                          className={profileModule["tArea"]}
-                          value={props.newPostText}
-                          onChange={onPostChange}
-                          rows={5}/>
-                <button
-                    className={profileModule["addPostButton"]}
-                    onClick={addPost}>Add post
-                </button>
+                <AddNewPostForm addPost={props.addPost}/>
             </div>
             {
                 props.postsData.map((item) => {
                     return <Post key={item.name} name={item.name} message={item.message} likesCount={item.likesCount}/>
                 })
             }
+        </div>
+    )
+}
+
+const AddNewPostForm = (props) => {
+
+    const validationSchemaNewPostForm = Yup.object().shape({
+        newPostBody: Yup.string()
+            .min(2, "Must be longer than 1 character")
+            .required( "Enter something" )
+    });
+
+    const addPostMessage = (text) => {
+        props.addPost(text);
+    }
+
+    return (
+        <div>
+            <Formik initialValues={
+                {
+                    newPostBody: ""
+                }
+            }
+                    validationSchema={validationSchemaNewPostForm}
+                    onSubmit={(values, {resetForm}) => {
+                        addPostMessage(values.newPostBody)
+                        resetForm({values: ""})
+                    }
+                    }>
+                {() => (
+                <Form>
+                    <div>
+                        <Field
+                            name={'newPostBody'}
+                            as={'textarea'}
+                            type={'text'}
+                            placeholder={'enter message'}/>
+                    </div>
+                    <ErrorMessage name="newPostBody" component="div" />
+                    <button type={'submit'}>Send</button>
+                </Form>
+                    )}
+            </Formik>
         </div>
     )
 }

@@ -10,7 +10,7 @@ import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
 
-function App(props) {
+function App() {
     return (
         <BrowserRouter>
             <div className={"wrapper"}>
