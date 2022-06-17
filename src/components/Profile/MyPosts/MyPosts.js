@@ -34,6 +34,7 @@ const AddNewPostForm = (props) => {
         props.addPost(text);
     }
 
+
     return (
         <div>
             <Formik initialValues={
@@ -47,17 +48,21 @@ const AddNewPostForm = (props) => {
                         resetForm({values: ""})
                     }
                     }>
-                {() => (
+                {( {isSubmitting}) => (
                 <Form>
                     <div>
                         <Field
                             name={'newPostBody'}
-                            as={'textarea'}
+                            as={'input'}
                             type={'text'}
-                            placeholder={'enter message'}/>
+                            placeholder={'enter message'}
+                            />
+
                     </div>
-                    <ErrorMessage name="newPostBody" component="div" />
-                    <button type={'submit'}>Send</button>
+                    <ErrorMessage name="newPostBody">
+                        { msg => <div className={profileModule["error"]}>{msg}</div> }
+                    </ErrorMessage>
+                    <button type={'submit'} disabled={isSubmitting}>Send</button>
                 </Form>
                     )}
             </Formik>
