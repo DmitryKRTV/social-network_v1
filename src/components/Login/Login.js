@@ -1,6 +1,11 @@
 import React from 'react';
 import {Formik, Form, Field, ErrorMessage} from "formik";
 import * as Yup from "yup";
+import {connect} from "react-redux";
+import {login, logout} from "../../redux/authReducer";
+import {Navigate} from "react-router-dom";
+
+
 
 
 const validateLoginForm = values => {
@@ -18,12 +23,16 @@ const validateLoginForm = values => {
 const validationSchemaLoginForm = Yup.object().shape( {
     password: Yup.string()
         .min( 2, "Must be longer than 2 characters" )
-        .max( 5, "Must be shorter than 5 characters" )
+        .min( 5, "Must be longer than 5 characters" )
         .required( "Required 2" )
 } );
 
 
-const Login = () => {
+const Login = (props) => {
+
+    if(props.auth.isAuth) {
+        return <Navigate to="/profile"/>
+    }
 
     return (
         <div>
@@ -38,7 +47,8 @@ const Login = () => {
                 validate={validateLoginForm}
                 validationSchema={validationSchemaLoginForm}
                 onSubmit={(values) => {
-                    console.log( values )
+                    console.log(props)
+                    props.login(values.email, values.password, values.rememberMe)
                 }}
             >
                 {() => (
@@ -80,4 +90,12 @@ const Login = () => {
     )
 }
 
-export default Login;
+    let mapStateToProps = (state) => {
+        return (
+            {
+                auth: state.auth,
+            }
+        )
+    }
+
+export default connect(mapStateToProps, {login, logout})(Login)
