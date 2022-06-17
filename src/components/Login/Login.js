@@ -34,6 +34,11 @@ const Login = (props) => {
         return <Navigate to="/profile"/>
     }
 
+    const onSubmit = (values, { setSubmitting, setStatus }) => {  // вторым параметром добавляем  setStatus
+        props.login(values.email, values.password, values.rememberMe, setStatus);
+        setSubmitting(false);
+    };
+
     return (
         <div>
             <h2> ... Login 555 </h2>
@@ -46,18 +51,19 @@ const Login = (props) => {
                 }}
                 validate={validateLoginForm}
                 validationSchema={validationSchemaLoginForm}
-                onSubmit={(values) => {
-                    console.log(props)
-                    props.login(values.email, values.password, values.rememberMe)
-                }}
+                onSubmit={onSubmit}
             >
-                {() => (
+                {({ errors, touched, isValid, dirty, status }) => (
+
                     <Form>
                         <div>
+                            {status}
                             <Field
                                 name={'email'}
                                 type={'text'}
-                                placeholder={'e-mail'} />
+                                placeholder={'e-mail'}
+
+                            />
                         </div>
                         <ErrorMessage name="email" component="div" />
 

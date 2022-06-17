@@ -33,12 +33,14 @@ export const getAuthThunkCreator = () => {
     }
 }
 
-export const login = (email, password, rememberMe) => {
+export const login = (email, password, rememberMe, setStatus) => {
     return (dispatch) => {
-        authAPI.login(email, password, rememberMe)
+        authAPI.login(email, password, rememberMe, setStatus)
             .then(response => {
                 if (response.data.resultCode === 0) {
                     dispatch(getAuthThunkCreator())
+                } else {
+                    setStatus(response.data.messages)
                 }
             });
     }
